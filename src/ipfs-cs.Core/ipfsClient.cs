@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using ipfsecho.Core;
 
-namespace ipfsecho.Core
+namespace ipfs.Core
 {
 	public class ipfsClient
 	{

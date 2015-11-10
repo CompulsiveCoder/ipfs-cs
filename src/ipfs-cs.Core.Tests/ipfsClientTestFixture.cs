@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using ipfs.Core;
 
 namespace ipfsecho.Core.Tests
 {
