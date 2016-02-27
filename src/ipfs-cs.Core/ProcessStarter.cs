@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ipfsecho.Core
+namespace ipfs.Core
 {
 	public class ProcessStarter
 	{
 		public bool IsError;
 		public bool ThrowExceptionOnError = true;
+		public bool WriteToConsole = false;
 
 		public string Output
 		{
@@ -61,12 +62,8 @@ namespace ipfsecho.Core
 		/// <param name='arguments'></param>
 		public virtual Process Start (string command, string arguments)
 		{
-			Console.WriteLine ("");
-			Console.WriteLine ("--------------------");
-			Console.WriteLine ("");
-			Console.WriteLine ("Starting process:");
-			Console.WriteLine (command + " " + arguments);
-			Console.WriteLine ("");
+			if (WriteToConsole)
+				Console.WriteLine ("Starting process: " + command + " " + arguments);
 
 			// If the command has an extension (and is therefore an actual file)
 			if (Path.GetExtension (command) != String.Empty) {
@@ -105,9 +102,13 @@ namespace ipfsecho.Core
 				(
 					delegate(object sender, DataReceivedEventArgs e)
 					{
-						Console.SetOut (c);
-						c.WriteLine(e.Data);
-						OutputBuilder.Append(e.Data);
+						if (WriteToConsole)
+						{
+							Console.SetOut (c);
+
+							c.WriteLine(e.Data);
+						}
+						OutputBuilder.Append(e.Data + Environment.NewLine);
 					}
 				);
 
@@ -116,9 +117,12 @@ namespace ipfsecho.Core
 				(
 					delegate(object sender, DataReceivedEventArgs e)
 					{
-						Console.SetOut (c);
-						c.WriteLine(e.Data);
-						OutputBuilder.Append(e.Data);
+						if (WriteToConsole)
+						{
+							Console.SetOut (c);
+							c.WriteLine(e.Data);
+						}
+						OutputBuilder.Append(e.Data + Environment.NewLine);
 					}
 				);
 
@@ -155,9 +159,9 @@ namespace ipfsecho.Core
 			}
 
 
-			Console.WriteLine("");
-			Console.WriteLine("--------------------");
-			Console.WriteLine("");
+			//Console.WriteLine("");
+			//Console.WriteLine("--------------------");
+			//Console.WriteLine("");
 
 			return process;
 		}
