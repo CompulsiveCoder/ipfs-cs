@@ -1,0 +1,6 @@
+sudo: required
+
+language: c#
+
+script:
+- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-echo/master/run-from-github.sh | sh
