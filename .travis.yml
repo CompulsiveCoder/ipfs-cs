@@ -3,4 +3,4 @@ sudo: required
 language: c#
 
 script:
-- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-echo/master/run-from-github.sh | sh
+- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/build-from-github.sh | sh
