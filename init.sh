@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install -y mono-runtime
+sudo apt-get install -y mono-complete
 
 cd lib
 sh get-libs.sh
