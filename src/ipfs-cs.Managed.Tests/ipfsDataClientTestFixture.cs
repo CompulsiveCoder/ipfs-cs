@@ -35,7 +35,7 @@ namespace ipfs.Managed.Tests
 		}
 
 		[Test]
-		public void Test_SetData()
+		public void Test_Set()
 		{
 			var managedClient = new ipfsManagedClient ();
 			managedClient.IsVerbose = true;
@@ -46,18 +46,18 @@ namespace ipfs.Managed.Tests
 
 			var subFolderName = "TestSubFolder";
 
-			managedClient.SetData (subFolderName, content);
+			managedClient.Set (subFolderName, "data.txt", content);
 
 			var subFolderPath = Path.Combine (dataDir, subFolderName);
 
-			var dataFilePath = Path.Combine (subFolderPath, Path.GetFileName (managedClient.DataFileName));
+			var dataFilePath = Path.Combine (subFolderPath, "data.txt");
 
 			Assert.IsTrue (File.Exists (dataFilePath));
 			Assert.AreEqual (content, File.ReadAllText (dataFilePath).Trim());
 
 			var content2 = "Hello World #2";
 
-			managedClient.SetData (subFolderName, content2);
+			managedClient.Set (subFolderName, "data.txt", content2);
 
 			var foundContent = File.ReadAllText (dataFilePath).Trim ();
 
@@ -69,7 +69,7 @@ namespace ipfs.Managed.Tests
 		}
 
 		[Test]
-		public void Test_AppendData()
+		public void Test_Append()
 		{
 			var dataClient = new ipfsManagedClient ();
 			dataClient.IsVerbose = true;
@@ -79,7 +79,7 @@ namespace ipfs.Managed.Tests
 			var content = "Hello World #1";
 
 			var subFolderName = "TestSubFolder";
-			dataClient.AppendData (subFolderName, content, true);
+			dataClient.Append (subFolderName, "data.txt", content, true);
 
 			var subFolderPath = Path.Combine (dataDir, subFolderName);
 
@@ -90,7 +90,7 @@ namespace ipfs.Managed.Tests
 
 			var content2 = "Hello World #2";
 
-			dataClient.AppendData (subFolderName, content2, true);
+			dataClient.Append (subFolderName,"data.txt", content2, true);
 
 			var combinedContent = content + Environment.NewLine + content2;
 

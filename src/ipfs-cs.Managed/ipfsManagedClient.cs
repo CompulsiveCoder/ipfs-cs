@@ -8,8 +8,6 @@ namespace ipfs.Managed
 	{
 		public string DataDirectory { get; set; }
 
-		public string DataFileName = "data.txt";
-
 		public ipfsClient Client { get; set; }
 
 		public bool IsVerbose = false;
@@ -67,11 +65,11 @@ namespace ipfs.Managed
 			return hash;
 		}
 
-		public string SetData (string subFolderName, string contents)
+		public string Set (string subFolderName, string fileName, string contents)
 		{
 			var subFolderPath = Path.Combine (DataDirectory, subFolderName);
 
-			var dataFilePath = Path.Combine (subFolderPath, DataFileName);
+			var dataFilePath = Path.Combine (subFolderPath, fileName);
 
 			if (IsVerbose) {
 				Console.WriteLine ("Appending file (via data client):");
@@ -106,11 +104,11 @@ namespace ipfs.Managed
 			return hash;
 		}
 
-		public string AppendData (string subFolderName, string contents, bool newLine)
+		public string Append (string subFolderName, string fileName, string contents, bool newLine)
 		{
 			var subFolderPath = Path.Combine (DataDirectory, subFolderName);
 
-			var dataFilePath = Path.Combine (subFolderPath, DataFileName);
+			var dataFilePath = Path.Combine (subFolderPath, fileName);
 
 			if (IsVerbose) {
 				Console.WriteLine ("Appending file (via data client):");
