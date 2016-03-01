@@ -110,7 +110,7 @@ namespace ipfs.Core.Tests
 		{
 			var hash = "QmQzCQn4puG4qu8PVysxZmscmQ5vT1ZXpqo7f58Uh9QfyY";
 
-			var output = "added QmNRCQWfgze6AbBCaT1rkrkV5tJ2aP4oTNPb5JZcXYywve ipfs-data/TestSubFolder/file.txt\nadded QmdwbpwH3Z3gFcpkJg11fzpwe7PjNq9bEgNveWyDk4pqwY ipfs-data/TestSubFolder\nadded " + hash + " ipfs-data";
+			var output = "added QmNRCQWfgze6AbBCaT1rkrkV5tJ2aP4oTNPb5JZcXYywve ipfs-data/TestSubFolder/file.txt\nadded QmdwbpwH3Z3gFcpkJg11fzpwe7PjNq9bEgNveWyDk4pqwY ipfs-data/TestSubFolder\nadded " + hash + " ipfs-data\n\n\t\t\t11 B  +Inf % 0\u001b[2K\n\t\t\t\t\u001b[2K\n\t\t\t\t\t\u001b[2K\n\n";
 
 			var client = new ipfsClient ();
 

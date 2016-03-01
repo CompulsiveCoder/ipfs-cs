@@ -1,4 +1,9 @@
-wget http://nuget.org/nuget.exe
+NUGET_FILE="nuget.exe"
+ 
+if [ ! -f "$NUGET_FILE" ];
+then
+    wget http://nuget.org/nuget.exe
+fi
 
 mozroots --import --sync
 

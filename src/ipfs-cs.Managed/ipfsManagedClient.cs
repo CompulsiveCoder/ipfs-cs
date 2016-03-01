@@ -111,11 +111,14 @@ namespace ipfs.Managed
 			var dataFilePath = Path.Combine (subFolderPath, fileName);
 
 			if (IsVerbose) {
-				Console.WriteLine ("Appending file (via data client):");
+				Console.WriteLine ("Appending file (via managed client):");
 				Console.WriteLine(dataFilePath);
 				Console.WriteLine();
-				Console.WriteLine ("Sub folder name:");
+				Console.WriteLine ("Folder name:");
 				Console.WriteLine(subFolderName);
+				Console.WriteLine();
+				Console.WriteLine ("File name:");
+				Console.WriteLine(fileName);
 				Console.WriteLine();
 				Console.WriteLine ("Data root directory:");
 				Console.WriteLine(DataDirectory);
@@ -155,7 +158,7 @@ namespace ipfs.Managed
 		public string Publish (string hash)
 		{
 			if (IsVerbose) {
-				Console.WriteLine ("Publishing (via data client):");
+				Console.WriteLine ("Publishing (via managed client):");
 				Console.WriteLine(hash);
 				Console.WriteLine();
 				Console.WriteLine ("Data root directory:");

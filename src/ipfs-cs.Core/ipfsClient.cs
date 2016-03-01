@@ -6,6 +6,8 @@ namespace ipfs.Core
 {
 	public class ipfsClient
 	{
+		public string IpfsCommand = "/usr/local/bin/ipfs";
+
 		public ipfsClient ()
 		{}
 
@@ -14,7 +16,7 @@ namespace ipfs.Core
 			var starter = new ProcessStarter ();
 
 			starter.Start (
-				String.Format ("ipfs add {0}", Path.GetFileName (filePath))
+				String.Format ("{0} add {1}", IpfsCommand, Path.GetFileName (filePath))
 			);
 
 			var hash = ExtractHashAfterAddFile(starter.Output);
@@ -30,7 +32,9 @@ namespace ipfs.Core
 
 			//Directory.SetCurrentDirectory (folder);
 
-			starter.Start ("ipfs add -r " + folder);
+			starter.Start (
+				String.Format("{0} add -r {1}", IpfsCommand, folder)
+			);
 
 			//Directory.SetCurrentDirectory (originalDirectory);
 
@@ -44,7 +48,7 @@ namespace ipfs.Core
 			var starter = new ProcessStarter ();
 
 			starter.Start (
-				String.Format ("ipfs name publish {0}", hash)
+				String.Format ("{0} name publish {1}", IpfsCommand, hash)
 			);
 
 			var peerId = ExtractHashAfterPublish(starter.Output);
@@ -70,9 +74,14 @@ namespace ipfs.Core
 		{
 			var lines = output.Trim().Split ('\n');
 
-			var lastLine = lines [lines.Length - 1];
+			var line = "";
 
-			var beginningRemoved = lastLine.Trim ().Substring (lastLine.IndexOf (" ")).TrimStart();
+			foreach (var l in lines) {
+				if (l.Trim().StartsWith ("added"))
+					line = l;
+			}
+
+			var beginningRemoved = line.Trim ().Substring (line.IndexOf (" ")).TrimStart();
 
 			var hash = beginningRemoved.Substring (0, beginningRemoved.IndexOf (" "));
 
