@@ -74,9 +74,14 @@ namespace ipfs.Core
 		{
 			var lines = output.Trim().Split ('\n');
 
-			var lastLine = lines [lines.Length - 1];
+			var line = "";
 
-			var beginningRemoved = lastLine.Trim ().Substring (lastLine.IndexOf (" ")).TrimStart();
+			foreach (var l in lines) {
+				if (l.Trim().StartsWith ("added"))
+					line = l;
+			}
+
+			var beginningRemoved = line.Trim ().Substring (line.IndexOf (" ")).TrimStart();
 
 			var hash = beginningRemoved.Substring (0, beginningRemoved.IndexOf (" "));
 
