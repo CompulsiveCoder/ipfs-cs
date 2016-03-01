@@ -8,4 +8,3 @@ fi
 mozroots --import --sync
 
 mono nuget.exe install nunit -version 2.6.4
-mono nuget.exe install nunit
