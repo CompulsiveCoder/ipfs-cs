@@ -6,7 +6,7 @@ namespace ipfs.Core
 {
 	public class ipfsClient
 	{
-		public string IpfsCommand = "/usr/local/bin/ipfs";
+		public string IpfsCommand = "sh ipfs.sh";
 
 		public ipfsClient ()
 		{}
