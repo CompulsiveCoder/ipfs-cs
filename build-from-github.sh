@@ -1,3 +1,3 @@
 git clone https://github.com/CompulsiveCoder/ipfs-cs.git
-cd ipfs-echo
+cd ipfs-cs
 sh init-build.sh

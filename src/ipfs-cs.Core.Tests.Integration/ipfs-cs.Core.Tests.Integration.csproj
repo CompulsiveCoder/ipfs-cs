@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ipfscs.Core.Tests.Integration</RootNamespace>
+    <RootNamespace>ipfs.Core.Tests.Integration</RootNamespace>
     <AssemblyName>ipfs-cs.Core.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -35,7 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ipfsClientIntegrationTestFixture.cs" />
+    <Compile Include="DockerTestLauncher.cs" />
+    <Compile Include="ipfsClientAddFolderIntegrationTestFixture.cs" />
+    <Compile Include="ipfsClientAddFileIntegrationTestFixture.cs" />
+    <Compile Include="ipfsClientPublishIntegrationTestFixture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
