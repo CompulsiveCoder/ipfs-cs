@@ -39,6 +39,7 @@
     <Compile Include="TemporaryDirectoryCreator.cs" />
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="ipfsFileChecker.cs" />
+    <Compile Include="ipfsLauncherTestFixture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
