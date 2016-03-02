@@ -3,17 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D9D5583-42C7-4CCC-89CB-9EF5EB8BE5C7}</ProjectGuid>
+    <ProjectGuid>{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ipfs.Core.Tests</RootNamespace>
-    <AssemblyName>ipfs.Core.Tests</AssemblyName>
+    <RootNamespace>ipfs.Core.Tests.Integration</RootNamespace>
+    <AssemblyName>ipfs-cs.Core.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -22,7 +22,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release</OutputPath>
+    <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -35,14 +35,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemporaryDirectoryCreator.cs" />
-    <Compile Include="BaseTestFixture.cs" />
-    <Compile Include="ipfsFileChecker.cs" />
-    <Compile Include="ipfsLauncherTestFixture.cs" />
-    <Compile Include="ipfsClientUnitTestFixture.cs" />
+    <Compile Include="DockerTestLauncher.cs" />
+    <Compile Include="ipfsClientAddFolderIntegrationTestFixture.cs" />
+    <Compile Include="ipfsClientAddFileIntegrationTestFixture.cs" />
+    <Compile Include="ipfsClientPublishIntegrationTestFixture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\ipfs-cs.Core.Tests\ipfs-cs.Core.Tests.csproj">
+      <Project>{9D9D5583-42C7-4CCC-89CB-9EF5EB8BE5C7}</Project>
+      <Name>ipfs-cs.Core.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ipfs-cs.Core\ipfs-cs.Core.csproj">
       <Project>{C29E2DE3-23FE-4048-81E6-313E308240F7}</Project>
       <Name>ipfs-cs.Core</Name>

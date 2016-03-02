@@ -12,6 +12,12 @@ namespace ipfs.Managed
 
 		public bool IsVerbose = false;
 
+		public string IpfsCommand
+		{
+			get { return Client.IpfsCommand; } 
+			set { Client.IpfsCommand = value; }
+		}
+
 		public ipfsManagedClient ()
 		{
 			DataDirectory = "ipfs-data";
