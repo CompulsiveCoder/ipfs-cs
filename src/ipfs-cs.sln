@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipfs-cs.Managed", "ipfs-cs.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipfs-cs.Managed.Tests", "ipfs-cs.Managed.Tests\ipfs-cs.Managed.Tests.csproj", "{9BF42E09-1644-4BE4-9C48-2A08D8E9EC6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipfs-cs.Core.Tests.Integration", "ipfs-cs.Core.Tests.Integration\ipfs-cs.Core.Tests.Integration.csproj", "{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -27,6 +29,10 @@ Global
 		{C29E2DE3-23FE-4048-81E6-313E308240F7}.Debug|x86.Build.0 = Debug|Any CPU
 		{C29E2DE3-23FE-4048-81E6-313E308240F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{C29E2DE3-23FE-4048-81E6-313E308240F7}.Release|x86.Build.0 = Release|Any CPU
+		{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}.Release|x86.Build.0 = Release|Any CPU
 		{F45854E8-7C9B-4E6B-8154-C0CB5A2AB694}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{F45854E8-7C9B-4E6B-8154-C0CB5A2AB694}.Debug|x86.Build.0 = Debug|Any CPU
 		{F45854E8-7C9B-4E6B-8154-C0CB5A2AB694}.Release|x86.ActiveCfg = Release|Any CPU

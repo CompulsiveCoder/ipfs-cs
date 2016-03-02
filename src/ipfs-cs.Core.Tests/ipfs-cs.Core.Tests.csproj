@@ -35,10 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ipfsClientTestFixture.cs" />
     <Compile Include="TemporaryDirectoryCreator.cs" />
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="ipfsFileChecker.cs" />
+    <Compile Include="ipfsClientUnitTestFixture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

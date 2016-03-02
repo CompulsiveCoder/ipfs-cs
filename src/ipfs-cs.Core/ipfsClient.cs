@@ -81,9 +81,13 @@ namespace ipfs.Core
 					line = l;
 			}
 
-			var beginningRemoved = line.Trim ().Substring (line.IndexOf (" ")).TrimStart();
+			var hash = "";
 
-			var hash = beginningRemoved.Substring (0, beginningRemoved.IndexOf (" "));
+			if (line.IndexOf (" ") > -1) {
+				var beginningRemoved = line.Trim ().Substring (line.IndexOf (" ")).TrimStart ();
+
+				hash = beginningRemoved.Substring (0, beginningRemoved.IndexOf (" "));
+			}
 
 			return hash;
 		}

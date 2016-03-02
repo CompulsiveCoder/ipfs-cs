@@ -7,7 +7,7 @@ using System.Threading;
 namespace ipfs.Core.Tests
 {
 	[TestFixture]
-	public class ipfsClientTestFixture : BaseTestFixture
+	public class ipfsClientIntegrationTestFixture : BaseTestFixture
 	{
 		[Test]
 		public void Test_AddFile()
@@ -20,9 +20,9 @@ namespace ipfs.Core.Tests
 
 			File.WriteAllText (tmpFile, text);
 
-			var ifps = new ipfsClient ();
+			var ipfs = new ipfsClient ();
 
-			var hash = ifps.AddFile (tmpFileName);
+			var hash = ipfs.AddFile (tmpFileName);
 
 			new ipfsFileChecker().CheckTestFile ("ipfs", hash, text);
 		}
@@ -90,7 +90,7 @@ namespace ipfs.Core.Tests
 		}
 
 
-		[Test]
+		/*[Test]
 		public void Test_ExtractHashAfterAddFile()
 		{
 			var hash = "QmQzCQn4puG4qu8PVysxZmscmQ5vT1ZXpqo7f58Uh9QfyY";
@@ -131,7 +131,7 @@ namespace ipfs.Core.Tests
 			var extractedHash = client.ExtractHashAfterPublish (outputLine);
 
 			Assert.AreEqual (hash, extractedHash);
-		}
+		}*/
 	}
 }
 
