@@ -1,3 +1,3 @@
 sudo apt-get update
-sudo apt-get install -y mono-complete
+sudo apt-get install -y git wget mono-complete
 
