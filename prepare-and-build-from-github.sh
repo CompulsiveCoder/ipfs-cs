@@ -1,3 +1,3 @@
-curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/prepare.sh | /bin/bash
-curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/build-from-git.sh | /bin/bash
+curl -v https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/prepare.sh | sh
+curl -v https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/build-from-github.sh | sh
 
