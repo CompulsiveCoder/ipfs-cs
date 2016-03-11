@@ -5,7 +5,7 @@ namespace ipfs.Core.Tests.Integration
 {
 	public class DockerTestLauncher
 	{
-		public string ImageName = "ubuntu";
+		public string ImageName = "compulsivecoder/ubuntu-mono";
 
 		public DockerTestLauncher ()
 		{
@@ -14,7 +14,7 @@ namespace ipfs.Core.Tests.Integration
 		{
 			var starter = new ProcessStarter ();
 
-			var pre = "sudo apt-get update && sudo apt-get install -y curl git";
+			var pre = "apt-get update && apt-get install -y curl git";
 			var command = "curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/build-from-github.sh | sh" +
 				"&& mono lib/NUnit.Runners.2.6.4/tools/nunit-console.exe bin/Release/*.dll /fixture:" + fixtureName;
 
