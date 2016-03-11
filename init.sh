@@ -1,5 +1,5 @@
 DIR=$PWD
 
 cd lib
-sh get-libs.sh
+/bin/bash get-libs.sh
 cd $DIR

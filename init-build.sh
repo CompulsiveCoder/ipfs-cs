@@ -1,3 +1,3 @@
-sh init.sh
+/bin/bash init.sh
 
-sh build.sh
+/bin/bash build.sh
