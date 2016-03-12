@@ -6,7 +6,9 @@ namespace ipfs.Core
 {
 	public class ipfsClient
 	{
-		public string IpfsCommand = "sh ipfs.sh";
+		// TODO: Remove if not needed
+		//public string IpfsCommand = "sh ipfs.sh";
+		public string IpfsCommand = "ipfs";
 
 		public ipfsClient ()
 		{}
@@ -62,6 +64,9 @@ namespace ipfs.Core
 
 		public string ExtractHashAfterAddFile(string output)
 		{
+			if (!output.Contains ("added"))
+				throw new ArgumentException ("Error: " + output);
+			
 			var beginningRemoved = output.Trim ().Substring (output.IndexOf (" ")).TrimStart();
 
 			var hash = beginningRemoved.Substring (0, beginningRemoved.IndexOf (" "));
@@ -72,6 +77,9 @@ namespace ipfs.Core
 
 		public string ExtractHashAfterAddFolder(string output)
 		{
+			if (!output.Contains ("added"))
+				throw new ArgumentException ("Error: " + output);
+
 			var lines = output.Trim().Split ('\n');
 
 			var line = "";
@@ -94,6 +102,9 @@ namespace ipfs.Core
 			
 		public string ExtractHashAfterPublish(string output)
 		{
+			if (!output.Contains ("Published to"))
+				throw new ArgumentException ("Error: " + output);
+			
 			var firstStep = output.Trim ().Replace ("Published to ", "");
 
 			var hash = firstStep.Substring (0, firstStep.IndexOf (":"));
