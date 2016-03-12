@@ -9,7 +9,7 @@ namespace ipfs.Core.Tests.Integration
 	[TestFixture]
 	public class ipfsClientAddFolderIntegrationTestFixture
 	{
-		[Test]
+		//[Test]
 		public void Test_AddFile()
 		{
 			new DockerTestLauncher ().Launch ("Test_AddFolder_Execute");

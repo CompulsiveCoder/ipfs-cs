@@ -103,7 +103,8 @@ namespace ipfs.Managed.Tests
 
 		}
 
-		[Test]
+		// TODO: Move this to integration tests
+		//[Test]
 		public void Test_Publish()
 		{
 			var dataClient = new ipfsManagedClient ();

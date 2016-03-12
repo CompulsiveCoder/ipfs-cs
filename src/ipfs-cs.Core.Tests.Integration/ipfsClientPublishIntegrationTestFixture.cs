@@ -7,7 +7,7 @@ namespace ipfs.Core.Tests.Integration
 	[TestFixture]
 	public class ipfsClientPublishIntegrationTestFixture
 	{
-		[Test]
+		//[Test]
 		public void Test_Publish()
 		{
 			var tmpFileName = "file.txt";
