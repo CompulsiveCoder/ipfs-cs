@@ -3,4 +3,4 @@ sudo: required
 language: c#
 
 script:
-- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/prepare-and-build-from-github.sh | sh
+- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$TRAVIS_BRANCH/prepare-and-build-from-github.sh | sh -s $TRAVIS_BRANCH

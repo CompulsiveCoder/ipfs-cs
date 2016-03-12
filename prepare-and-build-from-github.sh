@@ -1,3 +1,8 @@
-curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/prepare.sh | sh
-curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/build-from-github.sh | sh
+BRANCH=$1
 
+if [ -z "$BRANCH" ]; then
+    BRANCH="master"
+fi
+
+curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$BRANCH/prepare.sh | sh
+curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$BRANCH/build-from-github.sh | sh -s $BRANCH
