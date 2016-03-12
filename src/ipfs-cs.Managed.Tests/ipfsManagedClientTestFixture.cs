@@ -8,7 +8,8 @@ namespace ipfs.Managed.Tests
 	[TestFixture]
 	public class ipfsManagedClientTestFixture : BaseTestFixture
 	{
-		[Test]
+		// TODO: Move to integration test
+		//[Test]
 		public void Test_AddFile()
 		{
 			var managedClient = new ipfsManagedClient ();
@@ -34,7 +35,8 @@ namespace ipfs.Managed.Tests
 			Assert.IsTrue (File.Exists (importedFilePath));
 		}
 
-		[Test]
+		// TODO: Move to integration test
+		//[Test]
 		public void Test_Set()
 		{
 			var managedClient = new ipfsManagedClient ();
@@ -68,7 +70,8 @@ namespace ipfs.Managed.Tests
 
 		}
 
-		[Test]
+		// TODO: Move to integration test
+		//[Test]
 		public void Test_Append()
 		{
 			var dataClient = new ipfsManagedClient ();
