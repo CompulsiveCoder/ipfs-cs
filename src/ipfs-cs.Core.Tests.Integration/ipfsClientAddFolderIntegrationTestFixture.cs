@@ -7,15 +7,15 @@ using ipfs.Core.Tests;
 namespace ipfs.Core.Tests.Integration
 {
 	[TestFixture]
-	public class ipfsClientAddFolderIntegrationTestFixture
+	public class ipfsClientAddFolderIntegrationTestFixture : BaseIntegrationTestFixture
 	{
 		[Test]
 		public void Test_AddFile()
 		{
-			new DockerTestLauncher ().Launch ("Test_AddFolder_Execute");
+			new DockerTestLauncher ().Launch (this);
 		}
 
-		public void Test_AddFolder_Execute()
+		public override void Execute()
 		{
 			var tmpFileName = "file.txt";
 

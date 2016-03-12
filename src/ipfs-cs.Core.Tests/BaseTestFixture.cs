@@ -8,7 +8,7 @@ namespace ipfs.Core.Tests
 	{
 		public string OriginalDirectory;
 
-		public bool DeleteTemporaryDirectory = true;
+		public bool DeleteTemporaryDirectory = false;
 
 		public BaseTestFixture ()
 		{
@@ -35,7 +35,7 @@ namespace ipfs.Core.Tests
 
 			Directory.SetCurrentDirectory (OriginalDirectory);
 
-			if (DeleteTemporaryDirectory) {
+			if (DeleteTemporaryDirectory && tmpDir.ToLower().Contains(".tmp")) {
 				Directory.Delete (tmpDir, true);
 			}
 		}

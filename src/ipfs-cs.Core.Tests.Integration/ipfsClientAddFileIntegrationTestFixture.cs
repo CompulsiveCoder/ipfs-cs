@@ -8,15 +8,15 @@ using ipfs.Core.Tests.Integration;
 namespace ipfs.Core.Tests.Integration
 {
 	[TestFixture]
-	public class ipfsClientAddFileIntegrationTestFixture : BaseTestFixture
+	public class ipfsClientAddFileIntegrationTestFixture : BaseIntegrationTestFixture
 	{
 		[Test]
 		public void Test_AddFile()
 		{
-			new DockerTestLauncher ().Launch ("ipfsClientAddFileIntegrationTestFixture");
+			new DockerTestLauncher ().Launch (this);
 		}
 
-		public void Test_AddFile_Execute()
+		public override void Execute()
 		{
 			var tmpFileName = "file.txt";
 
