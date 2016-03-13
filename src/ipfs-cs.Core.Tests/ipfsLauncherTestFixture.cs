@@ -7,12 +7,13 @@ namespace ipfs.Core.Tests
 	[TestFixture]
 	public class ipfsLauncherTestFixture
 	{
-		[Test]
+		// TODO: This test is slow so it's disabled
+		//[Test]
 		public void Test_Start()
 		{
 			using (var launcher = new ipfsLauncher ()) {
 				launcher.Start ();
-				Thread.Sleep (10000);
+				Thread.Sleep (5000);
 				launcher.Close ();
 			}
 		}
