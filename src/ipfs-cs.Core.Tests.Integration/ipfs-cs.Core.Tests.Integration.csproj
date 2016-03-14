@@ -6,7 +6,7 @@
     <ProjectGuid>{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ipfs.Core.Tests.Integration</RootNamespace>
-    <AssemblyName>ipfs-cs.Core.Tests.Integration</AssemblyName>
+    <AssemblyName>ipfs.Core.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

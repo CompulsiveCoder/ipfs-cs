@@ -9,7 +9,7 @@ namespace ipfs.Core.Tests.Integration
 	[TestFixture]
 	public class ipfsClientAddFolderIntegrationTestFixture : BaseIntegrationTestFixture
 	{
-		//[Test]
+		[Test]
 		public void Test_AddFile()
 		{
 			new DockerTestLauncher ().Launch (this);
@@ -25,9 +25,9 @@ namespace ipfs.Core.Tests.Integration
 
 			File.WriteAllText (tmpFile, text);
 
-			var ifps = new ipfsClient ();
+			var ipfs = new ipfsClient ();
 
-			var hash = ifps.AddFolder (Environment.CurrentDirectory);
+			var hash = ipfs.AddFolder (Environment.CurrentDirectory);
 
 			new ipfsFileChecker().CheckTestFile ("ipfs", hash, "file.txt", text);
 		}

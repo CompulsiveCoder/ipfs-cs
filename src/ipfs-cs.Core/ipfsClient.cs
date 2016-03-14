@@ -10,8 +10,35 @@ namespace ipfs.Core
 		//public string IpfsCommand = "sh ipfs.sh";
 		public string IpfsCommand = "ipfs";
 
+		public string IpfsDataPath;
+
 		public ipfsClient ()
-		{}
+		{
+			IpfsDataPath = Path.GetFullPath(".ipfs-data");
+		}
+
+		public ipfsClient (string ipfsDataPath)
+		{
+			IpfsDataPath = ipfsDataPath;
+		}
+
+		public void Init()
+		{
+			Console.WriteLine ("Initializing ipfs client.");
+
+			if (!Directory.Exists (IpfsDataPath))
+				Directory.CreateDirectory (IpfsDataPath);
+
+			Directory.SetCurrentDirectory (IpfsDataPath);
+
+			var starter = new ProcessStarter ();
+
+			starter.Start (
+				String.Format ("{0} init", IpfsCommand)
+			);
+
+			Console.WriteLine (starter.Output);
+		}
 
 		public string AddFile(string filePath)
 		{
@@ -20,6 +47,8 @@ namespace ipfs.Core
 			starter.Start (
 				String.Format ("{0} add {1}", IpfsCommand, Path.GetFileName (filePath))
 			);
+
+			Console.WriteLine (starter.Output);
 
 			var hash = ExtractHashAfterAddFile(starter.Output);
 
@@ -38,6 +67,7 @@ namespace ipfs.Core
 				String.Format("{0} add -r {1}", IpfsCommand, folder)
 			);
 
+			Console.WriteLine (starter.Output);
 			//Directory.SetCurrentDirectory (originalDirectory);
 
 			var hash = ExtractHashAfterAddFolder(starter.Output);
@@ -52,6 +82,8 @@ namespace ipfs.Core
 			starter.Start (
 				String.Format ("{0} name publish {1}", IpfsCommand, hash)
 			);
+
+			Console.WriteLine (starter.Output);
 
 			var peerId = ExtractHashAfterPublish(starter.Output);
 
@@ -110,6 +142,15 @@ namespace ipfs.Core
 			var hash = firstStep.Substring (0, firstStep.IndexOf (":"));
 
 			return hash;
+		}
+
+		public ipfsDaemonLauncher StartDaemon()
+		{
+			var launcher = new ipfsDaemonLauncher (IpfsDataPath);
+
+			launcher.Start ();
+
+			return launcher;
 		}
 	}
 }

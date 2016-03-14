@@ -6,7 +6,7 @@ namespace ipfs.Core.Tests.Integration
 {
 	public class DockerTestLauncher
 	{
-		public string ImageName = "compulsivecoder/ubuntu-mono";
+		public string ImageName = "compulsivecoder/ubuntu-mono-ipfs";
 
 		public DockerTestLauncher ()
 		{
@@ -20,25 +20,24 @@ namespace ipfs.Core.Tests.Integration
 		{
 			var starter = new ProcessStarter ();
 
-			//var pre = "apt-get update && apt-get install -y curl git";
-			/*var command = "curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/master/build-from-github.sh | sh && ls && pwd" +
-				"&& mono lib/NUnit.Runners.2.6.4/tools/nunit-console.exe bin/Release/*.dll /fixture:" + fixtureName;*/
+			var projectPath = Path.GetFullPath ("../../");
 
-			//sh ../../hello.sh
-			var command = "cd ipfs-cs && sh build.sh && mono bin/{0}/LaunchIntegrationTest.exe /assembly:bin/{0}/{1}.dll /type:{2}";
-				//"&& mono lib/NUnit.Runners.2.6.4/tools/nunit-console.exe bin/Release/*.dll /fixture:" + fixtureName;
+			var assemblyName = Path.GetFileName(fixtureType.Assembly.Location);
 
+			var buildMode = "Release";
+			#if DEBUG
+			buildMode = "Debug";
+			#endif
 
-			//command = pre + " && " + command;
+			var command = String.Format("cp /ipfs-cs /ipfs-cs-staging -r && cd /ipfs-cs-staging && rm bin/* -r && sh build.sh {0} && cd bin/{0} && pwd && ls && mono LaunchIntegrationTest.exe /assembly:\"{1}\" /type:\"{2}\"", buildMode, assemblyName, fixtureType.FullName);
 
-			//command = String.Format ("docker run {0} /bin/bash -c '{1}'", ImageName, command);
-			command = String.Format ("docker run -i -v {0}:/ipfs-cs {1} {2}", Path.GetFullPath("../../../.."), ImageName, command);
-
+			command = String.Format ("docker run -i -v {0}:/ipfs-cs {1} /bin/bash -c '{2}'", projectPath, ImageName, command);
+			starter.WriteToConsole = true;
 			starter.Start (
 				command
 			);
 
-			Console.WriteLine (starter.Output);
+			//Console.WriteLine (starter.Output);
 		}
 	}
 }

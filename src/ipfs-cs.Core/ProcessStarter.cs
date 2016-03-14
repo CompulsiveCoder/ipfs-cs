@@ -99,32 +99,32 @@ namespace ipfs.Core
 
 			// Output the errors to the console
 			process.ErrorDataReceived += new DataReceivedEventHandler
-				(
-					delegate(object sender, DataReceivedEventArgs e)
+			(
+				delegate(object sender, DataReceivedEventArgs e)
+				{
+					if (WriteToConsole)
 					{
-						if (WriteToConsole)
-						{
-							Console.SetOut (c);
+						Console.SetOut (c);
 
-							c.WriteLine(e.Data);
-						}
-						OutputBuilder.Append(e.Data + Environment.NewLine);
+						c.WriteLine(e.Data);
 					}
-				);
+					OutputBuilder.Append(e.Data + Environment.NewLine);
+				}
+			);
 
 			// Output the data to the console
 			process.OutputDataReceived += new DataReceivedEventHandler
-				(
-					delegate(object sender, DataReceivedEventArgs e)
+			(
+				delegate(object sender, DataReceivedEventArgs e)
+				{
+					if (WriteToConsole)
 					{
-						if (WriteToConsole)
-						{
-							Console.SetOut (c);
-							c.WriteLine(e.Data);
-						}
-						OutputBuilder.Append(e.Data + Environment.NewLine);
+						Console.SetOut (c);
+						c.WriteLine(e.Data);
 					}
-				);
+					OutputBuilder.Append(e.Data + Environment.NewLine);
+				}
+			);
 
 			try
 			{

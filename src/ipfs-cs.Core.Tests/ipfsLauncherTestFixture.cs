@@ -11,7 +11,7 @@ namespace ipfs.Core.Tests
 		//[Test]
 		public void Test_Start()
 		{
-			using (var launcher = new ipfsLauncher ()) {
+			using (var launcher = new ipfsDaemonLauncher ()) {
 				launcher.Start ();
 				Thread.Sleep (5000);
 				launcher.Close ();

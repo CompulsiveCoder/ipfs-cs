@@ -6,13 +6,21 @@ using System.Threading;
 
 namespace ipfs.Core
 {
-	public class ipfsLauncher : Component
+	public class ipfsDaemonLauncher : Component
 	{
 		Thread IpfsThread;
 		Process IpfsProcess;
 
-		public ipfsLauncher ()
+		public string IpfsDataPath { get;set; }
+
+		public ipfsDaemonLauncher ()
 		{
+			IpfsDataPath = Path.GetFullPath(".ipfs-data");
+		}
+
+		public ipfsDaemonLauncher (string ipfsDataPath)
+		{
+			IpfsDataPath = ipfsDataPath;
 		}
 
 		public void Start()
@@ -24,15 +32,15 @@ namespace ipfs.Core
 
 		public void StartProcess()
 		{
-			var ipfsScriptPath = Path.GetFullPath ("../../run-ipfs-for-tests.sh");
+			//var ipfsScriptPath = Path.GetFullPath ("../../run-ipfs-for-tests.sh");
 
 			var ipfsProcess = new Process ();
 			IpfsProcess = ipfsProcess; // TODO: Clean up code
-			ipfsProcess.StartInfo = new ProcessStartInfo ("sh", ipfsScriptPath + " >> ipfsdaemon.log");
+			ipfsProcess.StartInfo = new ProcessStartInfo ("ipfs", "daemon");
 			//ipfsProcess.StartInfo.WorkingDirectory = dataPath;
 			//ipfsProcess.StartInfo.CreateNoWindow = true;
 
-			ipfsProcess.StartInfo.UseShellExecute = true;
+			//ipfsProcess.StartInfo.UseShellExecute = true;
 			/*ipfsProcess.StartInfo.RedirectStandardInput = true;
 			ipfsProcess.StartInfo.RedirectStandardOutput = true;
 			ipfsProcess.StartInfo.RedirectStandardError = true;*/
@@ -46,7 +54,7 @@ namespace ipfs.Core
 		public void Close()
 		{
 			if (IpfsThread != null) {
-			//	IpfsProcess.Kill ();
+				IpfsProcess.Kill ();
 				IpfsThread.Abort ();
 			}
 		}
@@ -60,6 +68,11 @@ namespace ipfs.Core
 			}
 
 			base.Dispose (release_all);
+		}
+
+		public ipfsClient NewClient()
+		{
+			return new ipfsClient (IpfsDataPath);
 		}
 	}
 }

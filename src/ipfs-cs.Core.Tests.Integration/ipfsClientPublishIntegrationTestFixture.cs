@@ -5,10 +5,15 @@ using System.IO;
 namespace ipfs.Core.Tests.Integration
 {
 	[TestFixture]
-	public class ipfsClientPublishIntegrationTestFixture
+	public class ipfsClientPublishIntegrationTestFixture : BaseIntegrationTestFixture
 	{
-		//[Test]
+		[Test]
 		public void Test_Publish()
+		{
+			new DockerTestLauncher ().Launch (this);
+		}
+
+		public override void Execute()
 		{
 			var tmpFileName = "file.txt";
 

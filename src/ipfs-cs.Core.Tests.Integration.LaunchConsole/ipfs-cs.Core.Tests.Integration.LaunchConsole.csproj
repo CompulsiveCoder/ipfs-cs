@@ -6,7 +6,7 @@
     <ProjectGuid>{7035D30F-3196-47D8-B3AE-FAAD6D24ED23}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ipfs.Core.Tests.Integration.LaunchConsole</RootNamespace>
-    <AssemblyName>LaunchIntegrationTest.exe</AssemblyName>
+    <AssemblyName>LaunchIntegrationTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -38,4 +38,26 @@
     <Compile Include="Arguments.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\ipfs-cs.Core.Tests.Integration\ipfs-cs.Core.Tests.Integration.csproj">
+      <Project>{C733A318-EB6A-4113-ABBA-9A0D2CCFE6C8}</Project>
+      <Name>ipfs-cs.Core.Tests.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ipfs-cs.Core\ipfs-cs.Core.csproj">
+      <Project>{C29E2DE3-23FE-4048-81E6-313E308240F7}</Project>
+      <Name>ipfs-cs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ipfs-cs.Core.Tests\ipfs-cs.Core.Tests.csproj">
+      <Project>{9D9D5583-42C7-4CCC-89CB-9EF5EB8BE5C7}</Project>
+      <Name>ipfs-cs.Core.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ipfs-cs.Managed.Tests\ipfs-cs.Managed.Tests.csproj">
+      <Project>{9BF42E09-1644-4BE4-9C48-2A08D8E9EC6C}</Project>
+      <Name>ipfs-cs.Managed.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ipfs-cs.Managed\ipfs-cs.Managed.csproj">
+      <Project>{F45854E8-7C9B-4E6B-8154-C0CB5A2AB694}</Project>
+      <Name>ipfs-cs.Managed</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
