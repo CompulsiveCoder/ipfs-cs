@@ -36,7 +36,7 @@ namespace ipfs.Core
 
 			var ipfsProcess = new Process ();
 			IpfsProcess = ipfsProcess; // TODO: Clean up code
-			ipfsProcess.StartInfo = new ProcessStartInfo ("/bin/bash", "-c \"nohup ipfs daemon &\"");
+			ipfsProcess.StartInfo = new ProcessStartInfo ("/bin/bash", "-c \"ipfs daemon &\"");
 			//ipfsProcess.StartInfo.WorkingDirectory = dataPath;
 			//ipfsProcess.StartInfo.CreateNoWindow = true;
 
