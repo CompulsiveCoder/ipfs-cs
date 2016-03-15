@@ -29,7 +29,7 @@ namespace ipfs.Core.Tests.Integration
 			buildMode = "Debug";
 			#endif
 
-			var command = String.Format("cp /ipfs-cs /ipfs-cs-staging -r && cd /ipfs-cs-staging && rm bin/* -r && sh build.sh {0} && cd bin/{0} && pwd && ls && mono LaunchIntegrationTest.exe /assembly:\"{1}\" /type:\"{2}\"", buildMode, assemblyName, fixtureType.FullName);
+			var command = String.Format("cp /ipfs-cs /ipfs-cs-staging -r && cd /ipfs-cs-staging && rm bin/* -r && sh build.sh {0} && cd bin/{0} && mono LaunchIntegrationTest.exe /assembly:\"{1}\" /type:\"{2}\"", buildMode, assemblyName, fixtureType.FullName);
 
 			command = String.Format ("docker run -i -v {0}:/ipfs-cs {1} /bin/bash -c '{2}'", projectPath, ImageName, command);
 			starter.WriteToConsole = true;
