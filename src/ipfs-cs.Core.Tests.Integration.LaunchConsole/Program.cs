@@ -38,7 +38,7 @@ namespace ipfs.Core.Tests.Integration.LaunchConsole
 
 			//Thread.Sleep (20000); // This delay seems to prevent a "resource unavailable" error
 
-			using (var ipfsLauncher = ipfsClient.StartDaemon()) {
+			//using (var ipfsLauncher = ipfsClient.StartDaemon()) {
 
 				// TODO: Check if needed
 				Thread.Sleep (10000); // Let the daemon start
@@ -46,7 +46,7 @@ namespace ipfs.Core.Tests.Integration.LaunchConsole
 				testMethod.Invoke (fixture, null);
 
 			//	ipfsLauncher.Close ();
-			}
+			//}
 		}
 	}
 }
