@@ -1,5 +1,5 @@
 # ipfs-cs
-A C# wrapper for the ipfs command line interface. Built on mono/ubuntu.
+A C# based wrapper for the ipfs command line interface. Built on mono/ubuntu.
 
 
 # One line build
