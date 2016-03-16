@@ -25,28 +25,14 @@ namespace ipfs.Core.Tests.Integration.LaunchConsole
 			var assembly = Assembly.LoadFrom(assemblyPath);
 
 			var fixtureType = assembly.GetType (fixtureTypeName);
-//			var fixtureType = Type.GetType (fixtureTypeName);
 
 			var fixture = (BaseIntegrationTestFixture)Activator.CreateInstance(fixtureType);
 
 			var testMethod = fixtureType.GetMethod ("Execute");
 
-			var ipfsDataPath = Path.GetFullPath (".ipfs-test-data");
+//			Thread.Sleep (1000);
 
-			var ipfsClient = new ipfsClient (ipfsDataPath);
-			//ipfsClient.Init ();
-
-			//Thread.Sleep (20000); // This delay seems to prevent a "resource unavailable" error
-
-			//using (var ipfsLauncher = ipfsClient.StartDaemon()) {
-
-				// TODO: Check if needed
-				Thread.Sleep (10000); // Let the daemon start
-
-				testMethod.Invoke (fixture, null);
-
-			//	ipfsLauncher.Close ();
-			//}
+			testMethod.Invoke (fixture, null);
 		}
 	}
 }
