@@ -38,6 +38,9 @@ namespace ipfs.Core.Tests.Integration
 				command
 			);
 
+			if (starter.IsError)
+				throw new Exception ("Error launching docker based test");
+
 			//Console.WriteLine (starter.Output);
 		}
 	}
