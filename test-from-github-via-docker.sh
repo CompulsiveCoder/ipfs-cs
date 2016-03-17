@@ -16,4 +16,4 @@ fi
 echo "Branch: $BRANCH"
 echo "Tests: $TEST_CATEGORY"
 
-docker run -i compulsivecoder/ubuntu-mono-ipfs /bin/bash -c "curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$BRANCH/test-from-github.sh | sh -s $BRANCH $TEST_CATEGORY"
+docker run -i --privileged compulsivecoder/ubuntu-mono-ipfs /bin/bash -c "curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$BRANCH/test-from-github.sh | sh -s $BRANCH $TEST_CATEGORY"
