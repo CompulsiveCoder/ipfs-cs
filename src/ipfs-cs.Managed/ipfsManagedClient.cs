@@ -30,6 +30,11 @@ namespace ipfs.Managed
 			Client = new ipfsClient ();
 		}
 
+		public void Init()
+		{
+			Client.Init ();
+		}
+
 		public string AddFile(string filePath, string subFolderName)
 		{
 			if (IsVerbose) {
