@@ -46,7 +46,7 @@ namespace ipfs.Core.Tests.Integration
 			ipfs.Init ();
 
 			using (var daemon = ipfs.StartDaemon ()) {
-				Thread.Sleep (10000);
+				Thread.Sleep (5000);
 				var hash = ipfs.AddFolder (exampleFolderPath);
 
 				new ipfsFileChecker().CheckTestFile ("ipfs", hash, exampleFileName, text);
