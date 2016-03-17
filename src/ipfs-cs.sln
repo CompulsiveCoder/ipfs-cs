@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipfs-cs.Core.Tests.Integrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipfs-cs.Core.Tests.Integration.LaunchConsole", "ipfs-cs.Core.Tests.Integration.LaunchConsole\ipfs-cs.Core.Tests.Integration.LaunchConsole.csproj", "{7035D30F-3196-47D8-B3AE-FAAD6D24ED23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipfs-cs.Managed.Tests.Integration", "ipfs-cs.Managed.Tests.Integration\ipfs-cs.Managed.Tests.Integration.csproj", "{81F246CA-3CF6-4FB9-B10E-1BD9ECA10279}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,6 +25,10 @@ Global
 		{7035D30F-3196-47D8-B3AE-FAAD6D24ED23}.Debug|x86.Build.0 = Debug|x86
 		{7035D30F-3196-47D8-B3AE-FAAD6D24ED23}.Release|x86.ActiveCfg = Release|x86
 		{7035D30F-3196-47D8-B3AE-FAAD6D24ED23}.Release|x86.Build.0 = Release|x86
+		{81F246CA-3CF6-4FB9-B10E-1BD9ECA10279}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81F246CA-3CF6-4FB9-B10E-1BD9ECA10279}.Debug|x86.Build.0 = Debug|Any CPU
+		{81F246CA-3CF6-4FB9-B10E-1BD9ECA10279}.Release|x86.ActiveCfg = Release|Any CPU
+		{81F246CA-3CF6-4FB9-B10E-1BD9ECA10279}.Release|x86.Build.0 = Release|Any CPU
 		{9BF42E09-1644-4BE4-9C48-2A08D8E9EC6C}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{9BF42E09-1644-4BE4-9C48-2A08D8E9EC6C}.Debug|x86.Build.0 = Debug|Any CPU
 		{9BF42E09-1644-4BE4-9C48-2A08D8E9EC6C}.Release|x86.ActiveCfg = Release|Any CPU

@@ -3,13 +3,12 @@ using NUnit.Framework;
 using System.IO;
 using ipfs.Core.Tests;
 
-namespace ipfs.Managed.Tests
+namespace ipfs.Managed.Tests.Integration
 {
 	[TestFixture]
 	public class ipfsManagedClientTestFixture : BaseTestFixture
 	{
-		// TODO: Move to integration test
-		//[Test]
+		[Test]
 		public void Test_AddFile()
 		{
 			var managedClient = new ipfsManagedClient ();
