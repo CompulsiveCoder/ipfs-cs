@@ -19,12 +19,12 @@ namespace ipfs.Core.Tests.Integration
 		{
 			OriginalDirectory = Environment.CurrentDirectory;
 
-			var tmpDir = new TemporaryDirectoryCreator ().Create ();
+			//var tmpDir = new TemporaryDirectoryCreator ().Create ();
 
-			Directory.SetCurrentDirectory (tmpDir);
+			//Directory.SetCurrentDirectory (tmpDir);
 
 			Console.WriteLine ("Current directory:");
-			Console.WriteLine (tmpDir);
+			Console.WriteLine (Environment.CurrentDirectory);
 			Console.WriteLine ();
 		}
 

@@ -11,5 +11,5 @@ env:
 
 script:
 - docker pull compulsivecoder/ubuntu-mono-ipfs
-- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$TRAVIS_BRANCH/test-from-github-via-docker.sh | sh -s $TRAVIS_BRANCH $TEST_SUITE
+- sh test-via-docker.sh | sh -s $TRAVIS_BRANCH $TEST_SUITE
 

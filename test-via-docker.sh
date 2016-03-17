@@ -6,4 +6,6 @@ fi
 
 echo "Tests: $TEST_CATEGORY"
 
-docker run -i -v $PWD:/ipfs-cs compulsivecoder/ubuntu-mono-ipfs /bin/bash -c "cp /ipfs-cs /ipfs-cs-staging -r && cd /ipfs-cs-staging && sh test.sh $TEST_CATEGORY"
+sh build.sh
+
+docker run -i -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/ipfs-cs compulsivecoder/ubuntu-mono-ipfs /bin/bash -c "cd /ipfs-cs && sh test.sh $TEST_CATEGORY"
