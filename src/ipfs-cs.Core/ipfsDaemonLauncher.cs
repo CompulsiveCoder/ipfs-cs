@@ -27,7 +27,12 @@ namespace ipfs.Core
 		{
 			//StartProcess ();
 			//IpfsThread = new System.Threading.Thread(StartProcess);
-			return StartProcess();
+			//return StartProcess();
+			Process process = null;
+			ThreadPool.QueueUserWorkItem(delegate {
+				process = StartProcess();
+			});
+			return process;
 		}
 
 		public Process StartProcess()
