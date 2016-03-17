@@ -1,5 +1,8 @@
+echo "Getting libraries for ipfs-cs project"
+echo "Dir: $PWD"
+
 NUGET_FILE="nuget.exe"
- 
+
 if [ ! -f "$NUGET_FILE" ];
 then
     wget http://nuget.org/nuget.exe

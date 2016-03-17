@@ -1,3 +1,6 @@
+echo "Starting build for ipfs-cs project"
+echo "Dir: $PWD"
+
 MODE=$1
 
 if [ -z "$MODE" ]; then
