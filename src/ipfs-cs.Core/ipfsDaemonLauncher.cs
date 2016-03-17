@@ -29,9 +29,9 @@ namespace ipfs.Core
 			//IpfsThread = new System.Threading.Thread(StartProcess);
 			//return StartProcess();
 			Process process = null;
-			ThreadPool.QueueUserWorkItem(delegate {
+			//ThreadPool.QueueUserWorkItem(delegate {
 				process = StartProcess();
-			});
+			//});
 			return process;
 		}
 
