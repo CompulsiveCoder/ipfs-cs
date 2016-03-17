@@ -6,7 +6,7 @@ namespace ipfs.Core.Tests
 {
 	public class ipfsFileChecker : BaseTestFixture
 	{
-		public int MaxTries = 100;
+		public int MaxTries = 20;
 
 		public int DelayBetweenTries = 2000;
 

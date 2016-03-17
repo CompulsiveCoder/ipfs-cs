@@ -25,13 +25,15 @@ namespace ipfs.Core
 
 		public void Start()
 		{
-			IpfsThread = new System.Threading.Thread(StartProcess);
+			StartProcess ();
+			//IpfsThread = new System.Threading.Thread(StartProcess);
 
-			IpfsThread.Start ();
+			//IpfsThread.Start ();
 		}
 
 		public void StartProcess()
 		{
+			Console.WriteLine ("Attempting to start ipfs daemon");
 			//var ipfsScriptPath = Path.GetFullPath ("../../run-ipfs-for-tests.sh");
 
 			var ipfsProcess = new Process ();
@@ -41,7 +43,10 @@ namespace ipfs.Core
 
 			// TODO: Overhaul this function or remove it
 
-			ipfsProcess.StartInfo = new ProcessStartInfo ("ipfs daemon &");
+			ipfsProcess.StartInfo = new ProcessStartInfo (
+				"sh", "run-ipfs-for-test.sh"
+				//"ipfs daemon > ipfs.log"
+			);
 
 			//ipfsProcess.StartInfo.WorkingDirectory = dataPath;
 			//ipfsProcess.StartInfo.CreateNoWindow = true;
@@ -52,7 +57,11 @@ namespace ipfs.Core
 			ipfsProcess.StartInfo.RedirectStandardError = true;*/
 			//ipfsProcess.
 			ipfsProcess.Start ();
-
+			ipfsProcess.WaitForExit ();
+			Console.WriteLine (ipfsProcess.StandardOutput.ReadToEnd ());
+			Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
+			//ipfsProcess.WaitForExit ();
+			//Thread.Sleep(5000);
 			//Thread.Sleep (10000);
 			//ipfsProcess.Kill ();
 		}
