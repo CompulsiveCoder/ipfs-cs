@@ -44,7 +44,7 @@ namespace ipfs.Core
 
 			ipfsProcess.StartInfo = new ProcessStartInfo (
 				//"/bin/bash", " -c \"cd ../../ && sh run-ipfs-for-test.sh\""
-				"nohup", "ipfs daemon &"
+				"ipfs", "daemon"
 			);
 
 			//ipfsProcess.StartInfo.WorkingDirectory = dataPath;
