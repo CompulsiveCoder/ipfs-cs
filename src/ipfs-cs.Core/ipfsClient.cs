@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ipfs.Core;
+using System.Diagnostics;
 
 namespace ipfs.Core
 {
@@ -171,16 +172,14 @@ namespace ipfs.Core
 			return hash;
 		}
 
-		public ipfsDaemonLauncher StartDaemon()
+		public Process StartDaemon()
 		{
 			if (!IsInit)
 				throw new InvalidOperationException ("Call the \"Init\" function before calling \"StartDaemon\".");
 
 			var launcher = new ipfsDaemonLauncher (IpfsDataPath);
 
-			launcher.Start ();
-
-			return launcher;
+			return launcher.Start ();
 		}
 	}
 }
