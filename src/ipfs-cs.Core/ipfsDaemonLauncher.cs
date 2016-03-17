@@ -25,10 +25,10 @@ namespace ipfs.Core
 
 		public void Start()
 		{
-			StartProcess ();
-			//IpfsThread = new System.Threading.Thread(StartProcess);
+			//StartProcess ();
+			IpfsThread = new System.Threading.Thread(StartProcess);
 
-			//IpfsThread.Start ();
+			IpfsThread.Start ();
 		}
 
 		public void StartProcess()
@@ -44,22 +44,22 @@ namespace ipfs.Core
 			// TODO: Overhaul this function or remove it
 
 			ipfsProcess.StartInfo = new ProcessStartInfo (
-				"sh", "run-ipfs-for-test.sh"
-				//"ipfs daemon > ipfs.log"
+				//"/bin/bash", " -c \"cd ../../ && sh run-ipfs-for-test.sh\""
+				"ipfs", "daemon"
 			);
 
 			//ipfsProcess.StartInfo.WorkingDirectory = dataPath;
 			//ipfsProcess.StartInfo.CreateNoWindow = true;
 
-			//ipfsProcess.StartInfo.UseShellExecute = true;
-			/*ipfsProcess.StartInfo.RedirectStandardInput = true;
-			ipfsProcess.StartInfo.RedirectStandardOutput = true;
-			ipfsProcess.StartInfo.RedirectStandardError = true;*/
+			//ipfsProcess.StartInfo.UseShellExecute = false;
+			//ipfsProcess.StartInfo.RedirectStandardInput = true;
+			//ipfsProcess.StartInfo.RedirectStandardOutput = true;
+			//ipfsProcess.StartInfo.RedirectStandardError = true;
 			//ipfsProcess.
 			ipfsProcess.Start ();
 			ipfsProcess.WaitForExit ();
-			Console.WriteLine (ipfsProcess.StandardOutput.ReadToEnd ());
-			Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
+			//Console.WriteLine (ipfsProcess.StandardOutput.ReadToEnd ());
+			//Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
 			//ipfsProcess.WaitForExit ();
 			//Thread.Sleep(5000);
 			//Thread.Sleep (10000);
@@ -76,8 +76,13 @@ namespace ipfs.Core
 		protected override void Dispose (bool release_all)
 		{
 			Close ();
-			if (IpfsThread != null) {
+
+			if (IpfsProcess != null) {
 				IpfsProcess.Dispose ();
+				IpfsProcess = null;
+			}
+
+			if (IpfsThread != null) {
 				IpfsThread = null;
 			}
 

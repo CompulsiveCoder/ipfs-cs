@@ -1,4 +1,3 @@
-cd ..
 cp /ipfs-cs /ipfs-cs-staging -r
 cd /ipfs-cs-staging
 rm bin/* -r

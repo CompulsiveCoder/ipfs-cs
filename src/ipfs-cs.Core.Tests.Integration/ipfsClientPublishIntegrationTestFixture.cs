@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using System.IO;
+using System.Threading;
 
 namespace ipfs.Core.Tests.Integration
 {
@@ -27,33 +28,41 @@ namespace ipfs.Core.Tests.Integration
 
 			var ipfs = new ipfsClient ();
 
-			var hash = ipfs.AddFile (tmpFileName);
+			ipfs.Init ();
 
-			Console.WriteLine ("IPFS Hash: " + hash);
+			using (var daemon = ipfs.StartDaemon ()) {
+				Thread.Sleep (10000);
 
-			var peerId = ipfs.Publish (hash);
+				var hash = ipfs.AddFile (tmpFileName);
 
-			Console.WriteLine ("Peer ID: " + peerId);
+				Console.WriteLine ("IPFS Hash: " + hash);
 
-			var fileChecker = new ipfsFileChecker ();
+				var peerId = ipfs.Publish (hash);
 
-			fileChecker.CheckTestFile ("ipns", peerId, beforeText);
+				Console.WriteLine ("Peer ID: " + peerId);
 
-			var afterText = Guid.NewGuid().ToString();
+				var fileChecker = new ipfsFileChecker ();
 
-			Console.WriteLine ("After text: " + afterText);
+				fileChecker.CheckTestFile ("ipns", peerId, beforeText);
 
-			File.WriteAllText (tmpFilePath, afterText);
+				var afterText = Guid.NewGuid ().ToString ();
 
-			hash = ipfs.AddFile (tmpFileName);
+				Console.WriteLine ("After text: " + afterText);
 
-			Console.WriteLine ("IPFS Hash: " + hash);
+				File.WriteAllText (tmpFilePath, afterText);
 
-			peerId = ipfs.Publish (hash);
+				Thread.Sleep (2000);
 
-			Console.WriteLine ("Peer ID: " + peerId);
+				hash = ipfs.AddFile (tmpFileName);
 
-			fileChecker.CheckTestFile ("ipns", peerId, afterText);
+				Console.WriteLine ("IPFS Hash: " + hash);
+
+				peerId = ipfs.Publish (hash);
+
+				Console.WriteLine ("Peer ID: " + peerId);
+
+				fileChecker.CheckTestFile ("ipns", peerId, afterText);
+			}
 		}
 
 	}

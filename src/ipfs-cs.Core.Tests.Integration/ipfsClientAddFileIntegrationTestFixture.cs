@@ -22,16 +22,22 @@ namespace ipfs.Core.Tests.Integration
 
 			var tmpFile = Path.GetFullPath(tmpFileName);
 
+			Console.WriteLine ("Tmp file:");
+			Console.WriteLine (tmpFile);
+
 			var text = "Hello world";
 
 			File.WriteAllText (tmpFile, text);
 
 			var ipfs = new ipfsClient ();
-			ipfs.IpfsDataPath = "/.ipfs-data";
 
-			var hash = ipfs.AddFile (tmpFileName);
+			ipfs.Init ();
 
-			new ipfsFileChecker().CheckTestFile ("ipfs", hash, text);
+			using (var daemon = ipfs.StartDaemon ()) {
+				Thread.Sleep (10000);
+				var hash = ipfs.AddFile (tmpFileName);
+				new ipfsFileChecker ().CheckTestFile ("ipfs", hash, text);
+			}
 		}
 	}
 }

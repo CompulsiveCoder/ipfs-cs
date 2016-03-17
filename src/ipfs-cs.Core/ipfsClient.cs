@@ -12,6 +12,8 @@ namespace ipfs.Core
 
 		public string IpfsDataPath;
 
+		public bool IsInit = false;
+
 		public ipfsClient ()
 		{
 			IpfsDataPath = Path.GetFullPath(".ipfs-data");
@@ -24,10 +26,14 @@ namespace ipfs.Core
 
 		public void Init()
 		{
+			IsInit = true;
+
 			Console.WriteLine ("Initializing ipfs client.");
 
 			if (!Directory.Exists (IpfsDataPath))
 				Directory.CreateDirectory (IpfsDataPath);
+
+			var originalDirectory = Environment.CurrentDirectory;
 
 			Directory.SetCurrentDirectory (IpfsDataPath);
 
@@ -38,10 +44,18 @@ namespace ipfs.Core
 			);
 
 			Console.WriteLine (starter.Output);
+
+			Directory.SetCurrentDirectory (originalDirectory);
 		}
 
 		public string AddFile(string filePath)
 		{
+			Console.WriteLine ("Attempting to add file:");
+			Console.WriteLine (filePath);
+
+			if (!File.Exists (filePath))
+				throw new ArgumentException ("File not found: " + filePath);
+
 			var starter = new ProcessStarter ();
 
 			starter.Start (
@@ -55,16 +69,26 @@ namespace ipfs.Core
 			return hash;
 		}
 
-		public string AddFolder (string folder)
+		public string AddFolder (string folderPath)
 		{
+			Console.WriteLine ("Attempting to add folder:");
+			Console.WriteLine (folderPath);
+			Console.WriteLine ("Current directory:");
+			Console.WriteLine (Environment.CurrentDirectory);
+
+			if (!Directory.Exists (Path.GetFullPath(folderPath)))
+				throw new ArgumentException ("Folder not found: " + folderPath);
+			
+
 			var starter = new ProcessStarter ();
 
+			// TODO: Clean up code
 			//var originalDirectory = Environment.CurrentDirectory;
 
 			//Directory.SetCurrentDirectory (folder);
 
 			starter.Start (
-				String.Format("{0} add -r {1}", IpfsCommand, folder)
+				String.Format("{0} add -r {1}", IpfsCommand, folderPath)
 			);
 
 			Console.WriteLine (starter.Output);
@@ -77,6 +101,9 @@ namespace ipfs.Core
 
 		public string Publish(string hash)
 		{
+			Console.WriteLine ("Attempting to publish:");
+			Console.WriteLine (hash);
+
 			var starter = new ProcessStarter ();
 
 			starter.Start (
@@ -146,6 +173,9 @@ namespace ipfs.Core
 
 		public ipfsDaemonLauncher StartDaemon()
 		{
+			if (!IsInit)
+				throw new InvalidOperationException ("Call the \"Init\" function before calling \"StartDaemon\".");
+
 			var launcher = new ipfsDaemonLauncher (IpfsDataPath);
 
 			launcher.Start ();

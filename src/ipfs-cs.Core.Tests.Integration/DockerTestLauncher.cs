@@ -20,7 +20,7 @@ namespace ipfs.Core.Tests.Integration
 		{
 			var starter = new ProcessStarter ();
 
-			var projectPath = Path.GetFullPath ("../../");
+			var projectPath = Path.GetFullPath ("../../../../");
 
 			var assemblyName = Path.GetFileName(fixtureType.Assembly.Location);
 
@@ -29,6 +29,7 @@ namespace ipfs.Core.Tests.Integration
 			buildMode = "Debug";
 			#endif
 
+			// TODO: Clean ups
 			//var command = String.Format("cp /ipfs-cs /ipfs-cs-staging -r && cd /ipfs-cs-staging && rm bin/* -r && sh build.sh {0} && cd bin/{0} && mono LaunchIntegrationTest.exe /assembly:\"{1}\" /type:\"{2}\"", buildMode, assemblyName, fixtureType.FullName);
 			var command = String.Format("cd /ipfs-cs && sh start-integration-test.sh {0} {1} {2}", buildMode, assemblyName, fixtureType.FullName);
 
@@ -37,7 +38,7 @@ namespace ipfs.Core.Tests.Integration
 			starter.Start (
 				command
 			);
-
+			Console.WriteLine (starter.Output);
 			if (starter.IsError)
 				throw new Exception ("Error launching docker based test");
 

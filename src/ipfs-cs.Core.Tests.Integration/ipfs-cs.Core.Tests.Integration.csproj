@@ -40,6 +40,9 @@
     <Compile Include="ipfsClientAddFileIntegrationTestFixture.cs" />
     <Compile Include="ipfsClientPublishIntegrationTestFixture.cs" />
     <Compile Include="BaseIntegrationTestFixture.cs" />
+    <Compile Include="HelloWorldIntegrationTestFixture.cs" />
+    <Compile Include="ipfsLauncherIntegrationTestFixture.cs" />
+    <Compile Include="DirectoryCopier.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

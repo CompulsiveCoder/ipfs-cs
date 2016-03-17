@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.IO;
 using ipfs.Core;
 using ipfs.Core.Tests;
+using System.Threading;
 
 namespace ipfs.Core.Tests.Integration
 {
@@ -10,26 +11,46 @@ namespace ipfs.Core.Tests.Integration
 	public class ipfsClientAddFolderIntegrationTestFixture : BaseIntegrationTestFixture
 	{
 		[Test]
-		public void Test_AddFile()
+		public void Test_AddFolder()
 		{
 			new DockerTestLauncher ().Launch (this);
 		}
 
 		public override void Execute()
 		{
-			var tmpFileName = "file.txt";
+			Console.WriteLine ("Current directory:");
+			Console.WriteLine (Environment.CurrentDirectory);
 
-			var tmpFile = Path.GetFullPath(tmpFileName);
+			var exampleFolderName = "example";
+
+			var exampleFolderPath = Path.Combine(Environment.CurrentDirectory, exampleFolderName);
+
+			Console.WriteLine ("Example folder:");
+			Console.WriteLine (exampleFolderPath);
+
+			Directory.CreateDirectory (exampleFolderPath);
+
+			var exampleFileName = "file.txt";
+
+			var exampleFilePath = Path.Combine(exampleFolderPath, exampleFileName);
+
+			Console.WriteLine ("Example file:");
+			Console.WriteLine (exampleFilePath);
 
 			var text = "Hello world";
 
-			File.WriteAllText (tmpFile, text);
+			File.WriteAllText (exampleFilePath, text);
 
 			var ipfs = new ipfsClient ();
 
-			var hash = ipfs.AddFolder (Environment.CurrentDirectory);
+			ipfs.Init ();
 
-			new ipfsFileChecker().CheckTestFile ("ipfs", hash, "file.txt", text);
+			using (var daemon = ipfs.StartDaemon ()) {
+				Thread.Sleep (10000);
+				var hash = ipfs.AddFolder (exampleFolderPath);
+
+				new ipfsFileChecker().CheckTestFile ("ipfs", hash, exampleFileName, text);
+			}
 		}
 	}
 }
