@@ -71,7 +71,7 @@ namespace ipfs.Core
 
 			//return ipfsProcess;
 
-			return new ProcessStarter().Start("/bin/bash -c \"ipfs daemon &\"");
+			return new ProcessStarter().Start("/bin/bash -c \"ipfs daemon&\"");
 		}
 
 		// TODO: Remove if not needed
