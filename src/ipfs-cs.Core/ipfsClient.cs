@@ -67,7 +67,7 @@ namespace ipfs.Core
 			Console.WriteLine (starter.Output);
 
 			// TODO: Fixture out a way to reduce this duration
-			Thread.Sleep (5000);
+			Thread.Sleep (10000);
 
 			var hash = ExtractHashAfterAddFile(starter.Output);
 
