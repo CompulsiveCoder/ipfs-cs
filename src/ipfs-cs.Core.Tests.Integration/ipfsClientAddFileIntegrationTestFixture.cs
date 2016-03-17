@@ -37,11 +37,10 @@ namespace ipfs.Core.Tests.Integration
 
 			using (var daemon = ipfs.StartDaemon ()) {
 				// TODO: Fixture out a way to reduce this duration
-				Thread.Sleep (5000); // Sleep to let the daemon start, otherwise an error may occur
+				Thread.Sleep (10000); // Sleep to let the daemon start, otherwise an error may occur
 				var hash = ipfs.AddFile (tmpFileName);
 				new ipfsFileChecker ().CheckTestFile ("ipfs", hash, text);
 			}
 		}
 	}
 }
-
