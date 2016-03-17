@@ -29,9 +29,9 @@ namespace ipfs.Core
 			//IpfsThread = new System.Threading.Thread(StartProcess);
 			//return StartProcess();
 			Process process = null;
-			//ThreadPool.QueueUserWorkItem(delegate {
+			ThreadPool.QueueUserWorkItem(delegate {
 				process = StartProcess();
-			//});
+			});
 			return process;
 		}
 
@@ -40,17 +40,17 @@ namespace ipfs.Core
 			Console.WriteLine ("Attempting to start ipfs daemon");
 			//var ipfsScriptPath = Path.GetFullPath ("../../run-ipfs-for-tests.sh");
 
-			var ipfsProcess = new Process ();
+			//var ipfsProcess = new Process ();
 			//IpfsProcess = ipfsProcess; // TODO: Clean up code
 
 			//ipfsProcess.StartInfo = new ProcessStartInfo ("/bin/bash", "-c \"screen ipfs daemon\"");
 
 			// TODO: Overhaul this function or remove it
 
-			ipfsProcess.StartInfo = new ProcessStartInfo (
+			//ipfsProcess.StartInfo = new ProcessStartInfo (
 				//"/bin/bash", " -c \"cd ../../ && sh run-ipfs-for-test.sh\""
-				"ipfs", "daemon"
-			);
+			//	"ipfs", "daemon"
+			//);
 
 			//ipfsProcess.StartInfo.WorkingDirectory = dataPath;
 			//ipfsProcess.StartInfo.CreateNoWindow = true;
@@ -60,7 +60,7 @@ namespace ipfs.Core
 			//ipfsProcess.StartInfo.RedirectStandardOutput = true;
 			//ipfsProcess.StartInfo.RedirectStandardError = true;
 			//ipfsProcess.
-			ipfsProcess.Start ();
+			//ipfsProcess.Start ();
 			//ipfsProcess.WaitForExit ();
 			//Console.WriteLine (ipfsProcess.StandardOutput.ReadToEnd ());
 			//Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
@@ -69,7 +69,9 @@ namespace ipfs.Core
 			//Thread.Sleep (10000);
 			//ipfsProcess.Kill ();
 
-			return ipfsProcess;
+			//return ipfsProcess;
+
+			return new ProcessStarter().Start("ipfs daemon");
 		}
 
 		// TODO: Remove if not needed

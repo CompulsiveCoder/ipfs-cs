@@ -50,7 +50,6 @@ namespace ipfs.Core.Tests.Integration
 				var hash = ipfs.AddFolder (exampleFolderPath);
 
 				new ipfsFileChecker().CheckTestFile ("ipfs", hash, exampleFileName, text);
-				daemon.Close ();
 			}
 		}
 	}
