@@ -10,4 +10,4 @@ env:
   - TEST_SUITE=Integration
 
 script:
-- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$TRAVIS_BRANCH/prepare-and-test-from-github.sh | sh -s $TRAVIS_BRANCH $TEST_SUITE
+- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$TRAVIS_BRANCH/test-from-github-via-docker.sh | sh -s $TRAVIS_BRANCH $TEST_SUITE

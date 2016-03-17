@@ -1,4 +1,5 @@
 BRANCH=$1
+TEST_CATEGORY=$2
 
 if [ -z "$BRANCH" ]; then
     BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
@@ -8,6 +9,11 @@ if [ -z "$BRANCH" ]; then
     BRANCH="master"
 fi
 
-echo "Branch: $BRANCH"
+if [ -z "$TEST_CATEGORY" ]; then
+    TEST_CATEGORY="Unit"
+fi
 
-docker run -i compulsivecoder/ubuntu-mono /bin/bash -c "curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$BRANCH/test-from-github.sh | sh -s $BRANCH"
+echo "Branch: $BRANCH"
+echo "Tests: $TEST_CATEGORY"
+
+docker run -i compulsivecoder/ubuntu-mono /bin/bash -c "curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$BRANCH/test-from-github.sh | sh -s $BRANCH $TEST_CATEGORY"
