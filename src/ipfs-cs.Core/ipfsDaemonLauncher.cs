@@ -78,6 +78,7 @@ namespace ipfs.Core
 			Close ();
 
 			if (IpfsProcess != null) {
+				IpfsProcess.Kill ();
 				IpfsProcess.Dispose ();
 				IpfsProcess = null;
 			}
