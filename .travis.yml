@@ -5,5 +5,9 @@ language: c#
 services:
 - docker
 
+env:
+  - TEST_SUITE=Unit
+  - TEST_SUITE=Integration
+
 script:
-- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$TRAVIS_BRANCH/prepare-and-test-from-github.sh | sh -s $TRAVIS_BRANCH
+- curl https://raw.githubusercontent.com/CompulsiveCoder/ipfs-cs/$TRAVIS_BRANCH/prepare-and-test-from-github.sh | sh -s $TRAVIS_BRANCH $TEST_SUITE
