@@ -11,11 +11,12 @@ namespace ipfs.Core.Tests.Integration
 		public void Test_Start()
 		{
 			using (var launcher = new ipfsDaemonLauncher ()) {
-				using (var process = launcher.Start ()) {
+				using (var daemon = launcher.Start ()) {
 					for (int i = 0; i < 20; i++) {
 						Thread.Sleep (100);
 						Console.Write (".");
 					}
+					daemon.Close ();
 				}
 			}
 		}

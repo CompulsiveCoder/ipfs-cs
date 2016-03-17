@@ -37,6 +37,7 @@ namespace ipfs.Core.Tests.Integration
 				Thread.Sleep (10000);
 				var hash = ipfs.AddFile (tmpFileName);
 				new ipfsFileChecker ().CheckTestFile ("ipfs", hash, text);
+				daemon.Close ();
 			}
 		}
 	}

@@ -62,6 +62,7 @@ namespace ipfs.Core.Tests.Integration
 				Console.WriteLine ("Peer ID: " + peerId);
 
 				fileChecker.CheckTestFile ("ipns", peerId, afterText);
+				daemon.Close ();
 			}
 
 			// TODO: Clean up
