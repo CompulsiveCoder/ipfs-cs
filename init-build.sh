@@ -1,3 +1,2 @@
-sh init.sh
-
+sh init.sh && \
 sh build.sh
