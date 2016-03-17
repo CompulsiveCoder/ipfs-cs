@@ -8,7 +8,7 @@ namespace ipfs.Core.Tests.Integration
 	[TestFixtureAttribute(Category="Integration")]
 	public class ipfsClientPublishIntegrationTestFixture : BaseIntegrationTestFixture
 	{
-		[Test]
+		//[Test]
 		public void Test_Publish()
 		{
 			new DockerTestLauncher ().Launch (this);
@@ -62,7 +62,6 @@ namespace ipfs.Core.Tests.Integration
 				Console.WriteLine ("Peer ID: " + peerId);
 
 				fileChecker.CheckTestFile ("ipns", peerId, afterText);
-				daemon.Close ();
 			}
 		}
 
