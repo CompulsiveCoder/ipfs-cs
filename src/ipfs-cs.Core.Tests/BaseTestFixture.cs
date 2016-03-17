@@ -4,7 +4,6 @@ using System.IO;
 
 namespace ipfs.Core.Tests
 {
-	[TestFixtureAttribute(Category="Unit")]
 	public abstract class BaseTestFixture
 	{
 		public string OriginalDirectory;

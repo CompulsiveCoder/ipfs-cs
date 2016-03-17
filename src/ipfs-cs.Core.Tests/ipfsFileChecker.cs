@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace ipfs.Core.Tests
 {
-	public class ipfsFileChecker
+	public class ipfsFileChecker : BaseTestFixture
 	{
 		public int MaxTries = 100;
 

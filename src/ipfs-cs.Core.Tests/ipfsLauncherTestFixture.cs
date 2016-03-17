@@ -4,8 +4,8 @@ using System.Threading;
 
 namespace ipfs.Core.Tests
 {
-	[TestFixture]
-	public class ipfsLauncherTestFixture
+	[TestFixtureAttribute(Category="Unit")]
+	public class ipfsLauncherTestFixture : BaseTestFixture
 	{
 		// TODO: This test is slow so it's disabled
 		//[Test]

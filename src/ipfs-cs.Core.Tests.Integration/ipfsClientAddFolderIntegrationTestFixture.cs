@@ -6,7 +6,7 @@ using ipfs.Core.Tests;
 
 namespace ipfs.Core.Tests.Integration
 {
-	[TestFixture]
+	[TestFixtureAttribute(Category="Integration")]
 	public class ipfsClientAddFolderIntegrationTestFixture : BaseIntegrationTestFixture
 	{
 		[Test]

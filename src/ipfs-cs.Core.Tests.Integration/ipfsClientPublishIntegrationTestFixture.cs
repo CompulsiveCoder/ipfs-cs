@@ -4,7 +4,7 @@ using System.IO;
 
 namespace ipfs.Core.Tests.Integration
 {
-	[TestFixture]
+	[TestFixtureAttribute(Category="Integration")]
 	public class ipfsClientPublishIntegrationTestFixture : BaseIntegrationTestFixture
 	{
 		[Test]

@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ipfs.Core.Tests
 {
-	[TestFixture]
+	[TestFixtureAttribute(Category="Unit")]
 	public class ipfsClientUnitTestFixture : BaseTestFixture
 	{
 		[Test]
