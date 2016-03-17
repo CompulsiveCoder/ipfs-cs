@@ -16,7 +16,6 @@ namespace ipfs.Core.Tests.Integration
 						Thread.Sleep (100);
 						Console.Write (".");
 					}
-					daemon.Close ();
 				}
 			}
 		}
