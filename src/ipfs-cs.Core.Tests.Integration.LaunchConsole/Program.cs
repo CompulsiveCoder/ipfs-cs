@@ -11,8 +11,6 @@ namespace ipfs.Core.Tests.Integration.LaunchConsole
 		{
 			Console.WriteLine ("Preparing to launch integration test...");
 
-			// TODO: Clean up this function
-
 			var parsedArguments = new Arguments (args);
 
 			var assemblyPath = parsedArguments ["assembly"];
@@ -46,34 +44,7 @@ namespace ipfs.Core.Tests.Integration.LaunchConsole
 
 			var testMethod = fixtureType.GetMethod ("Execute");
 
-			// TODO: Clean up
-			/*
-			var ipfsClient = new ipfsClient(
-//			Thread.Sleep (1000);
-
-			testMethod.Invoke (fixture, null);*/
-
-
-			//var ipfsDataPath = Path.GetFullPath (".ipfs-test-data");
-			//			Thread.Sleep (1000);
-
-			//var ipfsClient = new ipfsClient (ipfsDataPath);
 			testMethod.Invoke (fixture, null);
-			//ipfsClient.Init ();		
-					
-			//Thread.Sleep (20000); // This delay seems to prevent a "resource unavailable" error		
-					
-			//using (var ipfsLauncher = ipfsClient.StartDaemon()) {		
-					
-			// TODO: Check if needed		
-			//Thread.Sleep (10000); // Let the daemon start		
-					
-			//testMethod.Invoke (fixture, null);		
-					
-			//	ipfsLauncher.Close ();		
-			//}		
-
-			//Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
 		}
 	}
 }
