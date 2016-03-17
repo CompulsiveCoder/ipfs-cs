@@ -6,6 +6,7 @@ fi
 
 echo "Tests: $TEST_CATEGORY"
 
-sh prepare.sh
-sh init.sh
+sh prepare.sh && \
+sh init.sh && \
+sh build.sh && \
 sh test.sh $TEST_CATEGORY
