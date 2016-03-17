@@ -64,9 +64,6 @@ namespace ipfs.Core.Tests.Integration
 				fileChecker.CheckTestFile ("ipns", peerId, afterText);
 				daemon.Close ();
 			}
-
-			// TODO: Clean up
-			//Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
 		}
 
 	}

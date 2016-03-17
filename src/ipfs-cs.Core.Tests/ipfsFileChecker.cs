@@ -65,7 +65,8 @@ namespace ipfs.Core.Tests
 
 				currentTry++;
 
-				Thread.Sleep (DelayBetweenTries);
+				if (!foundMatch)
+					Thread.Sleep (DelayBetweenTries);
 			}
 
 			Assert.IsTrue (foundMatch);
