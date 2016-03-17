@@ -57,7 +57,7 @@ namespace ipfs.Core
 			//ipfsProcess.StartInfo.RedirectStandardError = true;
 			//ipfsProcess.
 			ipfsProcess.Start ();
-			ipfsProcess.WaitForExit ();
+			//ipfsProcess.WaitForExit ();
 			//Console.WriteLine (ipfsProcess.StandardOutput.ReadToEnd ());
 			//Console.WriteLine (File.ReadAllText (Path.GetFullPath ("ipfs.log")));
 			//ipfsProcess.WaitForExit ();
