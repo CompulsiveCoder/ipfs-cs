@@ -1,2 +1,2 @@
-sh build.sh
+sh build.sh && \
 sh test-all.sh

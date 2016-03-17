@@ -6,5 +6,5 @@ fi
 
 echo "Category: $CATEGORY"
 
-sh build.sh
+sh build.sh && \
 sh test.sh $CATEGORY
