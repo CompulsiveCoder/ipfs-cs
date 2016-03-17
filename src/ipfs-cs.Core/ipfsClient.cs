@@ -179,7 +179,9 @@ namespace ipfs.Core
 
 			var launcher = new ipfsDaemonLauncher (IpfsDataPath);
 
-			return launcher.Start ();
+			launcher.Start ();
+
+			return null;
 		}
 	}
 }

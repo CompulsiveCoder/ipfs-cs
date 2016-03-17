@@ -10,14 +10,14 @@ namespace ipfs.Core.Tests.Integration
 		[Test]
 		public void Test_Start()
 		{
-			using (var launcher = new ipfsDaemonLauncher ()) {
-				using (var daemon = launcher.Start ()) {
-					for (int i = 0; i < 20; i++) {
-						Thread.Sleep (100);
-						Console.Write (".");
-					}
-				}
+			var launcher = new ipfsDaemonLauncher ();
+
+			launcher.Start ();
+			for (int i = 0; i < 20; i++) {
+				Thread.Sleep (100);
+				Console.Write (".");
 			}
+		
 		}
 	}
 }
