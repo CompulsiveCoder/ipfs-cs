@@ -2,6 +2,7 @@
 using System.IO;
 using ipfs.Core;
 using System.Diagnostics;
+using System.Threading;
 
 namespace ipfs.Core
 {
@@ -64,6 +65,9 @@ namespace ipfs.Core
 			);
 
 			Console.WriteLine (starter.Output);
+
+			// TODO: Fixture out a way to reduce this duration
+			Thread.Sleep (5000);
 
 			var hash = ExtractHashAfterAddFile(starter.Output);
 

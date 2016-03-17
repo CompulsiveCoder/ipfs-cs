@@ -18,6 +18,7 @@ namespace ipfs.Core.Tests.Integration
 
 		public override void Execute()
 		{
+			// Prepare for the test
 			var tmpFileName = "file.txt";
 
 			var tmpFile = Path.GetFullPath(tmpFileName);
@@ -29,12 +30,14 @@ namespace ipfs.Core.Tests.Integration
 
 			File.WriteAllText (tmpFile, text);
 
+			// Start the test
 			var ipfs = new ipfsClient ();
 
 			ipfs.Init ();
 
 			using (var daemon = ipfs.StartDaemon ()) {
-				Thread.Sleep (10000);
+				// TODO: Fixture out a way to reduce this duration
+				Thread.Sleep (10000); // Sleep to let the daemon start, otherwise an error may occur
 				var hash = ipfs.AddFile (tmpFileName);
 				new ipfsFileChecker ().CheckTestFile ("ipfs", hash, text);
 			}
